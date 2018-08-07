@@ -1,0 +1,344 @@
+***
+Targeting JavaScriptCore / WebKit.
+fuzzSeed: 193650365
+/*FCM*/function hashStr(s) {   var hash = 0;   var L = s.length;   for (var i = 0; i < L; i++) {     var c = s.charCodeAt(i);     hash = (Math.imul(hash, 31) + c) | 0;   }   return hash; }
+/*FCM*/function testMathyFunction(f, inputs) {   var results = [];   if (f) {     for (var j = 0; j < inputs.length; ++j) {       for (var k = 0; k < inputs.length; ++k) {         try {           results.push(f(inputs[j], inputs[k]));         } catch(e) {           results.push(errorToString(e));         }       }     }   }   /* Use uneval to distinguish -0, 0, "0", etc. */   /* Use hashStr to shorten the output and keep compareJIT files small. */   print(hashStr(uneval(results))); }
+/*FRC-fuzzSeed-193650365*/count=1; tryItOut("mathy1 = (function(x, y) { return (((((Math.log10(( + Math.fround(Math.sign(Math.fround(( + x)))))) | 0) && ((( - (Math.hypot(y, (( - ((-(2**53-2) & y) | 0)) | 0)) >>> 0)) >>> 0) >>> 0)) | 0) & ( + ( ! (( + (x > ( ! ((Math.imul(( ! y), (0x080000001 >>> 0)) >>> 0) | 0)))) | 0)))) | 0); }); testMathyFunction(mathy1, /*MARR*/[new Number(1.5), objectEmulatingUndefined(), objectEmulatingUndefined(), NaN, objectEmulatingUndefined(), x, false, false, false, x, new Number(1.5), objectEmulatingUndefined(), objectEmulatingUndefined(), new Number(1.5), new Number(1.5), NaN, x, objectEmulatingUndefined(), new Number(1.5), x, objectEmulatingUndefined(), x, new Number(1.5), x, false, new Number(1.5), false, x, objectEmulatingUndefined(), objectEmulatingUndefined(), false, NaN, x, objectEmulatingUndefined(), NaN, new Number(1.5), NaN, new Number(1.5), x, false, x, new Number(1.5), x, objectEmulatingUndefined(), x, x, NaN, false, objectEmulatingUndefined(), objectEmulatingUndefined(), x, new Number(1.5), false, x, NaN, false, false, x, false, false, x, objectEmulatingUndefined(), x, NaN, new Number(1.5), false, objectEmulatingUndefined(), new Number(1.5), false, false, x, new Number(1.5), objectEmulatingUndefined(), x, objectEmulatingUndefined(), NaN, NaN, objectEmulatingUndefined(), NaN, false, new Number(1.5), new Number(1.5), NaN, x, NaN, false, new Number(1.5), objectEmulatingUndefined(), objectEmulatingUndefined(), NaN, false, x, new Number(1.5), new Number(1.5), new Number(1.5), new Number(1.5), NaN, x, new Number(1.5), false, false, false, false, false, false, false, false, false, false, NaN, NaN, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, NaN]); ");
+Running threw: ReferenceError: Can't find variable: objectEmulatingUndefined
+
+/*FRC-fuzzSeed-193650365*/count=2; tryItOut("\"use strict\"; a0 = Array.prototype.map.apply(a2, [(function(j) { if (j) { try { o1.o0.f2 + g0; } catch(e0) { } try { Array.prototype.unshift.call(a0, g1, m2, g2.g0); } catch(e1) { } try { p1 + ''; } catch(e2) { } v2 = g0.objectEmulatingUndefined(); } else { { void 0; void schedulegc(this); } v1 = (o2.o1.s1 instanceof p2); } }), v2]);");
+Running threw: ReferenceError: Can't find variable: a2
+
+/*FRC-fuzzSeed-193650365*/count=3; tryItOut("\"use strict\"; /*tLoop*/for (let b of /*MARR*/[arguments.callee, {x:3}, arguments.callee, 1e-81, 1e-81, 1e-81, {x:3}, arguments.callee, arguments.callee, arguments.callee, {x:3}, 1e-81, 1e-81, 1e-81, 1e-81, 1e-81, {x:3}, 1e-81, 1e-81]) { ; }");
+Plain eval!
+
+/*FRC-fuzzSeed-193650365*/count=4; tryItOut("\"use strict\"; a1 + '';function b(b, z = false, d, eval, x, x, y, NaN, b =  '' , function(id) { return id }, x, y = this, b, eval, e, x, b, eval, window,  /x/g , eval = \"\\uD67B\", x = /(?=[^]?([^]){4,}|(?=$|\\w?)*)*?/gyim, w = -0, x, x, e, z, x, x, e, NaN =  \"\" , z, x, x, a, w, y,  , a, a, z, window, x, z = \"\\u6170\", a, x = /^/yi, x, b, c, z, b, c, x = -0, NaN, w =  '' , e, NaN, x, w, x, x, b, x, x =  /x/ , x, x, x, a, x, c, NaN, b, y, x = \"\\u99E6\", x = 25, z, b, eval, a = -3, z, x, x, z = /(?:(?:$|\\b{2,})|(\\W){1}*)/gyim, a, w, b) { yield  /x/g  } h1.has = (function() { try { h1 = {}; } catch(e0) { } try { e2 = new Set; } catch(e1) { } v2 = (t0 instanceof f0); return b1; });");
+Compiling threw: SyntaxError: Cannot destructure to a parameter name 'eval' in strict mode.
+
+/*FRC-fuzzSeed-193650365*/count=5; tryItOut("");
+
+/*FRC-fuzzSeed-193650365*/count=6; tryItOut("e2.delete(o0);");
+Running threw: ReferenceError: Can't find variable: e2
+
+/*FRC-fuzzSeed-193650365*/count=7; tryItOut("g1.v0 = g0.eval(\"testMathyFunction(mathy0, [-(2**53-2), -0x100000001, -0x080000000, -Number.MIN_VALUE, Math.PI, 2**53+2, 0x07fffffff, 1, Number.MIN_SAFE_INTEGER, 1/0, Number.MAX_VALUE, -(2**53+2), 0/0, -0x0ffffffff, -1/0, -0x07fffffff, -(2**53), -Number.MAX_VALUE, -0, Number.MAX_SAFE_INTEGER, Number.MIN_VALUE, 1.7976931348623157e308, -Number.MIN_SAFE_INTEGER, 0x100000000, 0x0ffffffff, -0x100000000, 42, 0.000000000000001, 0x080000001, 0x100000001, -Number.MAX_SAFE_INTEGER, 0x080000000, 2**53-2, 0, 2**53, -0x080000001]); \");");
+Running threw: ReferenceError: Can't find variable: g1
+
+/*FRC-fuzzSeed-193650365*/count=8; tryItOut("\"use asm\"; mathy5 = (function(x, y) { return Math.atanh(Math.tanh(Math.expm1(Math.sign(Math.log1p(mathy2(x, x)))))); }); ");
+
+/*FRC-fuzzSeed-193650365*/count=9; tryItOut("\"use strict\"; w = x, {} = -1464176248, e = x, x;o2.toSource = (function() { h0.get = (function(stdlib, foreign, heap){ \"use asm\";   var ff = foreign.ff;\n  var Float32ArrayView = new stdlib.Float32Array(heap);\n  var Int8ArrayView = new stdlib.Int8Array(heap);\n  function f(i0, d1)\n  {\n    i0 = i0|0;\n    d1 = +d1;\n    d1 = (-4398046511104.0);\n    (Float32ArrayView[(-0x2f51f*(i0)) >> 2]) = ((+(0x90479ed)));\n    {\n      {\n        (Int8ArrayView[(x) >> 0]) = (-0xfffff*(i0));\n      }\n    }\n    return +((-((((0x658444a)) << ((0x60e725f)+((((4277)) != (((0xf9f0a0f0)) | ((0x473f1b36)))) ? (i0) : (Math.tan(x))))))));\n  }\n  return f; })(this, {ff: function (e)\"use asm\";   var abs = stdlib.Math.abs;\n  var atan2 = stdlib.Math.atan2;\n  var acos = stdlib.Math.acos;\n  function f(i0, d1)\n  {\n    i0 = i0|0;\n    d1 = +d1;\n    var i2 = 0;\n    var i3 = 0;\n    d1 = ((+abs(((1152921504606847000.0)))) + (d1));\n    {\n      d1 = (+atan2(((33.0)), ((d1))));\n    }\n    d1 = (+atan2(((((+(((+acos(((d1)))) + (-2.3611832414348226e+21))))) % ((-536870913.0)))), ((1.9342813113834067e+25))));\n    {\n      return (((((0x9db7ee80)-(!(!(((-2251799813685247.0)) >= (((0xffffffff))>>>((0xf8bf515f)))))))>>>(((+(~((0xfaa74861)))) < (-16777217.0))+(i2)+(i3))) % (((((((0x442c114e) >= (0x600ef9ed))) & ((0xcea24cb2)-(0xfbeebca3))))+(i2)-(i0))>>>(((((0xdd788553)+(0x915e46bb)) ^ ((0x88b724ae)+(0x3bb7426a))) < (((!(0xffffffff))) | ((~~(-2305843009213694000.0)))))-(((-0x502655c) ? (-32769.0) : (257.0)) < (d1))))))|0;\n    }\n    return ((((abs((abs((~(-(0xffe8b9d7))))|0))|0))))|0;\n  }\n  return f;}, new ArrayBuffer(4096)); return v2; });");
+Compiling threw: SyntaxError: Unexpected string literal "use asm". Expected an opening '{' at the start of a function body.
+
+/*FRC-fuzzSeed-193650365*/count=10; tryItOut("m0 = Proxy.create(h0, o0);");
+Running threw: ReferenceError: Can't find variable: h0
+
+/*FRC-fuzzSeed-193650365*/count=11; tryItOut("\"use strict\"; this.o2.v0 = g0.runOffThreadScript();");
+Running threw: TypeError: undefined is not an object (evaluating 'this.o2')
+
+/*FRC-fuzzSeed-193650365*/count=12; tryItOut("v1 = evaluate(\"function f0(o2)  { for (var p in o0) { try { for (var v of this.i2) { Array.prototype.unshift.apply(a1, [e1, t1, this.m0, s1, g0.s2]); } } catch(e0) { } try { this.a0.forEach(Math.log(36893488147419103000)\\n, s2); } catch(e1) { } try { e1.has(/*MARR*/[true, function(){}, function(){}, o2, true, true, true, true, (-1/0),  \\\"\\\" , o2, true, (-1/0),  \\\"\\\" ].sort); } catch(e2) { } o1.a1.sort(); } } \", ({ global: g2, fileName: null, lineNumber: 42, isRunOnce: ((yield this.__defineGetter__(\"eval\", decodeURI)) , (void options('strict'))), noScriptRval: (x % 82 == 20), sourceIsLazy: true, catchTermination: ({}) = this.__defineSetter__(\"a\", Date.prototype.toLocaleString) }));");
+Compiling threw: SyntaxError: Unexpected keyword 'this'. Expected ')' to end a compound expression.
+
+/*FRC-fuzzSeed-193650365*/count=13; tryItOut("mathy1 = (function(x, y) { return Math.pow((mathy0((((Math.cbrt(Math.sign(( + Math.pow(0x080000000, -0x0ffffffff)))) | 0) >> x) | 0), ( + x)) | 0), (((mathy0(( + Math.atan2(( + -0), ( + ( + Math.exp(y))))), (Math.pow(-(2**53+2), ( + Math.abs(( + (y || ( + -0x07fffffff)))))) >>> 0)) | 0) == (( + ((Math.atan2((x | 0), Math.fround(2**53-2)) | 0) , (x >= y))) | 0)) >>> 0)); }); ");
+
+/*FRC-fuzzSeed-193650365*/count=14; tryItOut("\"use strict\"; mathy4 = (function(x, y) { \"use asm\"; return ( - (Math.fround(Math.min(Math.fround(Math.hypot(Math.fround((Math.fround(y) > Math.fround(-(2**53+2)))), ( + (y < (Math.pow(Math.fround(Math.sinh(Math.fround(x))), (Math.max(y, (-(2**53-2) >>> 0)) | 0)) | 0))))), Math.fround(Math.fround((Math.fround(( + x)) * Math.fround(y)))))) == (x * Math.expm1(( + ( ! Math.fround(mathy0(Math.fround(x), Math.fround(y))))))))); }); testMathyFunction(mathy4, [-(2**53-2), Math.PI, 0x080000001, -0, -Number.MIN_SAFE_INTEGER, -0x07fffffff, 1/0, 0x100000000, -(2**53+2), -Number.MAX_SAFE_INTEGER, -Number.MIN_VALUE, Number.MIN_SAFE_INTEGER, -0x100000000, 0.000000000000001, 1, 2**53+2, Number.MAX_VALUE, -Number.MAX_VALUE, Number.MAX_SAFE_INTEGER, 0, 0/0, 42, 1.7976931348623157e308, -0x080000001, -0x100000001, 2**53, 0x100000001, -0x0ffffffff, 0x0ffffffff, 2**53-2, 0x07fffffff, Number.MIN_VALUE, -0x080000000, -(2**53), 0x080000000, -1/0]); ");
+Running threw: ReferenceError: Can't find variable: mathy4
+
+/*FRC-fuzzSeed-193650365*/count=15; tryItOut("\"use strict\"; testMathyFunction(mathy1, /*MARR*/[NaN, NaN, x, x, {}, NaN, function(){}, x, NaN, {}, x, x, function(){}, {}, x, x, x, x, {}, x]); ");
+Running threw: ReferenceError: Can't find variable: x
+
+/*FRC-fuzzSeed-193650365*/count=16; tryItOut("\"use strict\"; v1 = Object.prototype.isPrototypeOf.call(g1.a0, g2.m2);/*vLoop*/for (yndvnh = 0; yndvnh < 23; ++yndvnh) { a = yndvnh; print(x); } ");
+Running threw: ReferenceError: Can't find variable: g1
+
+/*FRC-fuzzSeed-193650365*/count=17; tryItOut("\"use strict\"; testMathyFunction(mathy5, /*MARR*/[Infinity, -(2**53-2), Infinity, (1/0), -(2**53-2), Infinity, (1/0), -(2**53-2), Infinity, Infinity, -(2**53-2), (1/0), (1/0), (1/0), (1/0), -(2**53-2), Infinity, Infinity, (1/0), Infinity, (1/0), (1/0), (1/0), (1/0), Infinity, -(2**53-2), (1/0), (1/0), (1/0), (1/0), Infinity, Infinity, Infinity, (1/0), -(2**53-2), (1/0), -(2**53-2), (1/0), -(2**53-2), -(2**53-2), (1/0), Infinity, Infinity, -(2**53-2), -(2**53-2), Infinity, Infinity, -(2**53-2), -(2**53-2), (1/0), (1/0), -(2**53-2), (1/0), (1/0), (1/0), Infinity, -(2**53-2), -(2**53-2), (1/0), -(2**53-2), -(2**53-2), -(2**53-2), (1/0), -(2**53-2), -(2**53-2), Infinity, -(2**53-2), -(2**53-2), -(2**53-2), (1/0), (1/0), Infinity, -(2**53-2)]); ");
+-492642396
+
+/*FRC-fuzzSeed-193650365*/count=18; tryItOut("for(let d in /*FARR*/[x, .../*FARR*/[], \"\u03a0\" **= (function ([y]) { })()]) for(let c in []);/*vLoop*/for (let nyzaru = 0; nyzaru < 110; ++nyzaru, this) { let d = nyzaru; s2 = t1[9]; } ");
+
+/*FRC-fuzzSeed-193650365*/count=19; tryItOut("/* no regression tests found */");
+
+/*FRC-fuzzSeed-193650365*/count=20; tryItOut("Object.prototype.watch.call(p0, \"call\", (function(j) { if (j) { v2 = g0.runOffThreadScript(); } else { try { a0 = []; o0 = {}; s0 = ''; r0 = /x/; g0 = this; f0 = function(){}; m0 = new WeakMap; e0 = new Set; v0 = null; b0 = new ArrayBuffer(64); t0 = new Uint8ClampedArray; a1 = []; o1 = {}; s1 = ''; r1 = /x/; g1 = this; f1 = function(){}; m1 = new WeakMap; e1 = new Set; v1 = null; b1 = new ArrayBuffer(64); t1 = new Uint8ClampedArray; a2 = []; o2 = {}; s2 = ''; r2 = /x/; g2 = newGlobal({ cloneSingletons: false, disableLazyParsing:  \"\"  }); f2 = function(){}; m2 = new WeakMap; e2 = new Set; v2 = null; b2 = new ArrayBuffer(64); t2 = new Uint8ClampedArray;  } catch(e0) { } try { m2.set(f0, this.o1.p2); } catch(e1) { } try { Array.prototype.reverse.call(a1); } catch(e2) { } v2 = evaluate(\"/* no regression tests found */\", ({ global: g2, fileName: null, lineNumber: 42, isRunOnce: (x % 2 == 1), noScriptRval: true, sourceIsLazy: false, catchTermination: d })); } }));\nfunction f2(s0)  { /*bLoop*/for (qrgxsg = 0; qrgxsg < 7; ++qrgxsg) { if (qrgxsg % 5 == 4) { print(s0); } else { p0 + ''; }  }  } \n");
+Running threw: TypeError: undefined is not an object (evaluating 'Object.prototype.watch.call')
+
+/*FRC-fuzzSeed-193650365*/count=21; tryItOut("mathy0 = (function(x, y) { return Math.atan(( ! ((Math.trunc(( + (x ** Math.ceil(0)))) * Math.fround(((((y - -0x07fffffff) ? y : ( + x)) ** y) | 0))) >>> 0))); }); testMathyFunction(mathy0, [(new Boolean(false)), null, objectEmulatingUndefined(), -0, (new String('')), 0.1, '0', NaN, (new Boolean(true)), (function(){return 0;}), (new Number(0)), '/0/', [0], ({valueOf:function(){return '0';}}), '\\0', undefined, /0/, '', 0, ({toString:function(){return '0';}}), 1, false, (new Number(-0)), [], ({valueOf:function(){return 0;}}), true]); ");
+Running threw: ReferenceError: Can't find variable: objectEmulatingUndefined
+
+/*FRC-fuzzSeed-193650365*/count=22; tryItOut("\"use strict\"; \"use asm\"; v2.toString = (function mcc_() { var itkfrd = 0; return function() { ++itkfrd; if (/*ICCD*/itkfrd % 6 == 1) { dumpln('hit!'); try { Array.prototype.unshift.apply(this.a2, [o1.h2]); } catch(e0) { } b1 + p0; } else { dumpln('miss!'); try { /*MXX2*/g1.RegExp.prototype.exec = s1; } catch(e0) { } try { v1 = (s0 instanceof s0); } catch(e1) { } this.t2[v2] = new (4277)() <= e; } };})();");
+Running threw: ReferenceError: Can't find variable: v2
+
+/*FRC-fuzzSeed-193650365*/count=23; tryItOut("testMathyFunction(mathy5, [-1/0, -0x07fffffff, Number.MIN_VALUE, 1, 0.000000000000001, 0x080000001, 0, -0, -Number.MIN_VALUE, 0x07fffffff, -0x100000000, -Number.MAX_VALUE, Math.PI, 2**53+2, -0x080000001, -(2**53-2), 2**53-2, 0x100000000, -0x0ffffffff, -(2**53), Number.MAX_VALUE, -Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER, 0/0, 0x0ffffffff, 0x100000001, Number.MIN_SAFE_INTEGER, 2**53, 1/0, -0x080000000, 42, 0x080000000, -0x100000001, -(2**53+2), -Number.MAX_SAFE_INTEGER, 1.7976931348623157e308]); ");
+-1882180308
+
+/*FRC-fuzzSeed-193650365*/count=24; tryItOut("f2.valueOf = (function mcc_() { var zcsiig = 0; return function() { ++zcsiig; if (/*ICCD*/zcsiig % 11 == 4) { dumpln('hit!'); v1 = Array.prototype.some.apply(a0, [(function() { o2 = f2.__proto__; return b0; })]); } else { dumpln('miss!'); try { b0 = t0.buffer; } catch(e0) { } try { o2.m1.set(s0, h1); } catch(e1) { } v0 = g1.o1.t1.length; } };})();");
+Running threw: ReferenceError: Can't find variable: f2
+
+/*FRC-fuzzSeed-193650365*/count=25; tryItOut("\"use strict\"; { if (isAsmJSCompilationAvailable()) { void 0; verifyprebarriers(); } void 0; } print( '' );");
+Running threw: ReferenceError: Can't find variable: isAsmJSCompilationAvailable
+
+/*FRC-fuzzSeed-193650365*/count=26; tryItOut("\"use asm\"; /*infloop*///h\nwhile(new RegExp(\"(?:(?!.[^]*)){4}|$*\", \"\"))v0 = (o1 instanceof a2);");
+
+/*FRC-fuzzSeed-193650365*/count=27; tryItOut(";");
+About to recompile, using eval hack.
+
+/*FRC-fuzzSeed-193650365*/count=28; tryItOut("mathy1 = (function(x, y) { return ((Math.fround((( + (( ! ( + (((y >>> 0) + (-(2**53-2) >>> 0)) >>> 0))) * 0)) ? ((Math.round(( + y)) >>> 0) >>> 0) : ( + (Math.hypot(Math.imul(( + ((x | 0) ** ( + y))), y), (Math.sinh(y) >>> 0)) >>> x)))) && (((x << ( - y)) << ( + Math.pow((Math.atan2(y, (x >>> 0)) && y), 1/0))) | 0)) >> (Math.hypot(((((( + (Math.min(y, y) | 0)) || y) << Math.fround(Math.round(( + (Math.imul((x >>> 0), ((y > Math.fround(-0x100000000)) >>> 0)) >>> 0))))) >>> 0) >>> 0), (( ~ ( + Math.hypot(Math.fround(Math.fround(Math.asin(y))), Math.min(x, Math.atan2(y, (( + 1) !== ( + x))))))) >>> 0)) >>> 0)); }); testMathyFunction(mathy1, [-(2**53-2), 0x0ffffffff, 1.7976931348623157e308, 0x080000000, -0, Math.PI, 0x080000001, -0x080000001, 2**53+2, -0x07fffffff, 0x100000000, -1/0, -Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER, -Number.MAX_SAFE_INTEGER, -0x100000000, 0.000000000000001, 2**53, -0x0ffffffff, 42, -Number.MIN_VALUE, Number.MAX_VALUE, -0x080000000, 0x100000001, 0/0, 1/0, Number.MIN_SAFE_INTEGER, 0x07fffffff, 2**53-2, Number.MIN_VALUE, -(2**53+2), -(2**53), 0, -0x100000001, -Number.MAX_VALUE, 1]); ");
+729017611
+
+/*FRC-fuzzSeed-193650365*/count=29; tryItOut("mathy1 = (function(x, y) { return ((Math.fround(Math.fround((Math.fround(( ~ mathy0((( + ( + ( + Math.atan2(y, y)))) >>> 0), ( - x)))) & (Math.sin(Math.exp((y ? ((1/0 | 0) >>> (x | 0)) : x))) | 0)))) << (( + ( - ( + Math.tanh(( + Math.atan2(( + -0x100000000), ( + y))))))) != (( ! ((( + (Math.fround(Math.sinh(Math.fround(-(2**53)))) | 0)) | 0) >>> 0)) >>> 0))) | 0); }); ");
+
+/*FRC-fuzzSeed-193650365*/count=30; tryItOut("i1.send(o1);");
+Running threw: ReferenceError: Can't find variable: i1
+
+/*FRC-fuzzSeed-193650365*/count=31; tryItOut("/* no regression tests found */");
+
+/*FRC-fuzzSeed-193650365*/count=32; tryItOut("\"use strict\"; /*RXUB*/var r = /\\2/im; var s = \"\"; print(s.split(r)); print(r.lastIndex); ");
+
+0
+
+/*FRC-fuzzSeed-193650365*/count=33; tryItOut("\"use strict\"; testMathyFunction(mathy3, [0x100000001, -0x07fffffff, -0x080000000, 0.000000000000001, -(2**53), -(2**53-2), Number.MIN_SAFE_INTEGER, 2**53+2, -Number.MIN_VALUE, 0/0, -0, -Number.MAX_SAFE_INTEGER, 2**53, -Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER, Number.MIN_VALUE, -Number.MAX_VALUE, -0x080000001, 0x080000001, 42, 0x0ffffffff, Math.PI, 0x100000000, 2**53-2, Number.MAX_VALUE, -1/0, -0x0ffffffff, 1.7976931348623157e308, 0x080000000, 0, 1/0, -(2**53+2), 0x07fffffff, -0x100000000, 1, -0x100000001]); ");
+Running threw: ReferenceError: Can't find variable: mathy3
+
+/*FRC-fuzzSeed-193650365*/count=34; tryItOut("mathy3 = (function(x, y) { return Math.min((Math.sign(Math.sqrt((mathy2((y | 0), (( + x) | 0)) | 0))) | 0), ( + (((( ~ x) >>> 0) >> (Math.fround(Math.imul(Math.fround(((mathy1((Number.MAX_VALUE | 0), (42 | 0)) | 0) != (x >>> 0))), (((Math.fround(( + (y >>> 0))) / ( + x)) >>> 0) | 0))) >>> 0)) >>> 0))); }); testMathyFunction(mathy3, [-(2**53), -Number.MIN_VALUE, -0x0ffffffff, -0, 2**53, -0x07fffffff, 0x080000001, -Number.MAX_VALUE, 0x080000000, Number.MAX_SAFE_INTEGER, 1.7976931348623157e308, -(2**53-2), 2**53-2, 1/0, 42, 0x100000001, -0x080000000, 0, Number.MAX_VALUE, -Number.MIN_SAFE_INTEGER, -0x100000001, 0x100000000, Number.MIN_VALUE, 2**53+2, -(2**53+2), 0/0, -0x080000001, -Number.MAX_SAFE_INTEGER, 0x07fffffff, 0x0ffffffff, -1/0, 0.000000000000001, Number.MIN_SAFE_INTEGER, -0x100000000, Math.PI, 1]); ");
+-1882180308
+
+/*FRC-fuzzSeed-193650365*/count=35; tryItOut("( \"\" );v0 = Object.prototype.isPrototypeOf.call(b2, f0);");
+Running threw: ReferenceError: Can't find variable: b2
+
+/*FRC-fuzzSeed-193650365*/count=36; tryItOut("testMathyFunction(mathy1, [-(2**53+2), 2**53-2, Number.MAX_SAFE_INTEGER, -1/0, Number.MAX_VALUE, 0x0ffffffff, -Number.MAX_VALUE, 1.7976931348623157e308, -Number.MIN_VALUE, 1, 0x100000001, -0x0ffffffff, Math.PI, 0.000000000000001, -0x07fffffff, 0x080000000, 0/0, -0x080000000, -(2**53-2), Number.MIN_SAFE_INTEGER, -(2**53), 2**53+2, 1/0, -0x100000000, -0x100000001, -0, 0, -Number.MIN_SAFE_INTEGER, 0x07fffffff, 42, 0x100000000, -0x080000001, 0x080000001, -Number.MAX_SAFE_INTEGER, Number.MIN_VALUE, 2**53]); ");
+-1358792212
+
+/*FRC-fuzzSeed-193650365*/count=37; tryItOut("mathy0 = (function(x, y) { return (( ! (( + (( + Math.asin(x)) > ( + Math.max(( + Math.acos(( + Math.max(x, -(2**53+2))))), (( - (( + x) * Math.fround((Math.fround(x) ? (x >>> 0) : Math.fround((y , x)))))) | 0))))) | 0)) | 0); }); testMathyFunction(mathy0, [({toString:function(){return '0';}}), '', /0/, false, 0.1, (function(){return 0;}), 0, (new String('')), (new Boolean(false)), '\\0', (new Boolean(true)), (new Number(-0)), ({valueOf:function(){return 0;}}), [0], objectEmulatingUndefined(), NaN, '0', undefined, -0, '/0/', [], ({valueOf:function(){return '0';}}), null, true, 1, (new Number(0))]); ");
+Running threw: ReferenceError: Can't find variable: objectEmulatingUndefined
+
+/*FRC-fuzzSeed-193650365*/count=38; tryItOut("mathy4 = (function(x, y) { return mathy2(Math.sqrt(mathy1(Math.fround(((( + Math.imul(( + -0x07fffffff), x)) >>> 0) - x)), x)), ((( ~ Math.sign(( ! y))) ? ( + Math.pow(( + y), ( + (( + (y * y)) * ((Math.hypot((x >>> 0), (Math.acosh((y >>> 0)) >>> 0)) >>> 0) || y))))) : Math.fround((( + ( + ( ! ( + ( + ( ! (0x080000001 | 0))))))) | 0))) | 0)); }); ");
+
+/*FRC-fuzzSeed-193650365*/count=39; tryItOut("o0 = Object.create(i1);");
+Running threw: ReferenceError: Can't find variable: i1
+
+/*FRC-fuzzSeed-193650365*/count=40; tryItOut("let (xytznn) { 18; }");
+Compiling threw: SyntaxError: Unexpected token '{'
+
+/*FRC-fuzzSeed-193650365*/count=41; tryItOut("\"use asm\"; /*RXUB*/var r = x; var s = \"\"; print(s.replace(r, yield ({}) = .throw((Math.exp(-14))))); ");
+Compiling threw: SyntaxError: Unexpected token '.'
+
+/*FRC-fuzzSeed-193650365*/count=42; tryItOut("\"use strict\"; mathy4 = (function(x, y) { return ( ~ Math.fround(Math.pow((Math.acos(Math.fround(Math.sin(Math.fround(mathy1(Math.fround((( ! y) >>> 0)), Math.fround(y)))))) | 0), Math.imul((Math.fround((Math.fround(( + ( ~ ( + 2**53-2)))) <= ( ! (x , x)))) | 0), ( + ( ! ( + x))))))); }); testMathyFunction(mathy4, [-0x080000001, 0x100000001, Number.MAX_SAFE_INTEGER, 1, 0x0ffffffff, -(2**53), 2**53, 42, -1/0, -(2**53-2), 2**53+2, -(2**53+2), 1/0, Number.MIN_SAFE_INTEGER, 0x080000000, -Number.MAX_SAFE_INTEGER, 0, 0.000000000000001, Number.MIN_VALUE, Number.MAX_VALUE, 0x100000000, -0x100000000, -0x100000001, 0x080000001, -0, 0/0, Math.PI, -0x07fffffff, -Number.MAX_VALUE, -Number.MIN_VALUE, -Number.MIN_SAFE_INTEGER, 2**53-2, 0x07fffffff, 1.7976931348623157e308, -0x0ffffffff, -0x080000000]); ");
+Compiling threw: SyntaxError: Unexpected token '**'. Amiguous unary expression in the left hand side of the exponentiation expression; parenthesis must be used to disambiguate the expression.
+
+/*FRC-fuzzSeed-193650365*/count=43; tryItOut("o1.a0[16] = ({setMinutes: (({a1:1}).__defineGetter__(\"d\", this)), x: (x = Proxy.createFunction(({/*TOODEEP*/})(5), (e, b) => \"use asm\";   var imul = stdlib.Math.imul;\n  var abs = stdlib.Math.abs;\n  var tan = stdlib.Math.tan;\n  var Float32ArrayView = new stdlib.Float32Array(heap);\n  var Int16ArrayView = new stdlib.Int16Array(heap);\n  var Int8ArrayView = new stdlib.Int8Array(heap);\n  function f(i0, i1)\n  {\n    i0 = i0|0;\n    i1 = i1|0;\n    i1 = (i1);\n    i0 = (i1);\n    i0 = ((0xd8462266) < (0x0));\n    i0 = (!((((i1))|0) != (((0x0) / (0x847e50d7)) >> ((i1)))));\n    i0 = (i0);\n    {\n      return (((((!(i1)))>>>((((0xf8644e62)+(0x20d3bc7c)-(0x688d09cb))>>>((1))) % (((0x62a6c3a3) / (0x57a3e315))>>>((i1))))) / (((i1)+(i1))>>>(((0xb0802fa))))))|0;\n    }\n    i0 = ((~~(\u3056++)));\n    (Float32ArrayView[(((((0x0) > (0xbb742913))*-0x8d747)>>>((-0x22e4a51)+(0x6eacc6)+(0x83f77a18))) / (0x84fd468)) >> 2]) = ((-4.722366482869645e+21));\n    i0 = (!((imul((i1), (i0))|0) <= (abs((~((((Int16ArrayView[((0xbbacbb81)) >> 1])) == (+(0.0/0.0)))+(i1))))|0)));\n    i1 = (i1);\n    i1 = ((((0xe9c6565d) / ((((0x8689b1a7) ? (0x9ae7817) : (-0x8000000)))>>>(((((0x385ca718)) >> ((0xa7b98b86))) < (((0xffffffff)) | ((0x76d673a2)))))))>>>((0x4ee937b8) % (((((0xfcc1086c))>>>((0xfbaeccee))) / (0xa7290e28))>>>((i1))))));\n    (Float32ArrayView[1]) = ((1.0009765625));\n    i0 = ((imul((!((0x82d3c053))), (i0))|0) == (~~(+((17592186044416.0)))));\n    return (((i1)-(((8388609.0) + ((-288230376151711740.0) + (((0x6470529b) >= (0x50e8d246))))) != (((-1.0625)) * ((-257.0))))+(((((0x0) < (0xbf2008c7))+((((16385.0)) * ((0.0078125))) < (+tan(((3.094850098213451e+26)))))+((true))) ^ (((((0x27687b9a))>>>((0xfda08157))) > (((0x9ebd6ffa))>>>((-0x8000000))))-(i0)+(i1))))))|0;\n    i1 = (i0);\n    i1 = ((0xffffffff));\n    i0 = (i0);\n    (Int8ArrayView[1]) = ((i1)-(i0));\n    i1 = (i0);\n    switch ((imul((i0), ((0x4bd931ab)))|0)) {\n      default:\n        i0 = (i0);\n    }\n    i1 = ((imul(((8796093022207.0) <= (((1152921504606847000.0)) % (((144115188075855870.0) + (-536870913.0))))), (i1))|0) == (imul((1), (0x9bca3e04))|0));\n    (Int8ArrayView[((i0)+(i0)-(i0)) >> 0]) = ((i1));\n    return ((-0xfffff*( \"\" )))|0;\n  }\n  return f;)) });");
+Compiling threw: SyntaxError: Unexpected token ';'. Expected ')' to end an argument list.
+
+/*FRC-fuzzSeed-193650365*/count=44; tryItOut("/*RXUB*/var r = r2; var s = \"\"; print(r.exec(s)); ");
+Running threw: ReferenceError: Can't find variable: r2
+
+/*FRC-fuzzSeed-193650365*/count=45; tryItOut("mathy2 = (function(x, y) { return (Math.ceil((((Math.pow(Math.log10(Math.imul(((y >>> 0) <= (y >>> 0)), ( + Math.imul(( + x), ( + (((y | 0) - (y | 0)) | 0)))))), y) >>> 0) | ( + Math.atan2((( + (Math.fround((( + Math.fround((x === Math.fround(-0x100000000)))) << Math.fround(0x100000001))) >>> 0)) | 0), ( + Math.cosh(y))))) >>> 0)) | 0); }); testMathyFunction(mathy2, [2**53-2, 0.000000000000001, -0x080000001, Number.MIN_VALUE, -(2**53), 1, -1/0, Number.MAX_VALUE, -(2**53-2), -0, -Number.MAX_SAFE_INTEGER, 1.7976931348623157e308, 2**53, -0x100000001, -0x0ffffffff, 0x07fffffff, 0, 0x080000001, -0x100000000, 0/0, 1/0, 0x100000001, Number.MAX_SAFE_INTEGER, 42, -Number.MAX_VALUE, -Number.MIN_SAFE_INTEGER, 0x100000000, 0x0ffffffff, Number.MIN_SAFE_INTEGER, -0x07fffffff, -(2**53+2), 2**53+2, Math.PI, 0x080000000, -0x080000000, -Number.MIN_VALUE]); ");
+1009690932
+
+/*FRC-fuzzSeed-193650365*/count=46; tryItOut("\"use asm\"; v2 = g0.eval(\"mathy5 = (function(x, y) { return (Math.hypot(((Math.atan2((Math.fround(Math.sin(((Math.sinh((( ! Math.cos(0x0ffffffff)) | 0)) >>> 0) | 0))) | 0), (((Math.fround(y) >= 0x100000001) >>> 0) | 0)) | 0) | 0), (Math.hypot((( + Math.atan2(y, (0x080000001 >>> 0))) | 0), (y ? ( + x) : Math.fround(x))) ^ (( ~ (( - y) | 0)) | 0))) | 0); }); testMathyFunction(mathy5, /*MARR*/[ /x/ , false,  /x/ ,  /x/ , (void 0),  /x/ , (void 0), (void 0), false, false, (void 0), (void 0),  /x/ ,  /x/ , false, false, (void 0), false,  /x/ , (void 0),  /x/ , false, (void 0), (void 0), false, (void 0), (void 0),  /x/ , (void 0), (void 0),  /x/ , (void 0),  /x/ ,  /x/ , false, false, false, false, false,  /x/ , (void 0), (void 0),  /x/ , (void 0), false, false,  /x/ , (void 0), false, false, (void 0), (void 0), false,  /x/ , (void 0),  /x/ ,  /x/ , false,  /x/ , false, false, false,  /x/ ,  /x/ , false, false, (void 0), (void 0), false, false, (void 0), false, (void 0),  /x/ , false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false,  /x/ , (void 0), false, false, false, false, false, false, (void 0),  /x/ , (void 0),  /x/ ,  /x/ , false,  /x/ , false, false,  /x/ ,  /x/ , false,  /x/ ,  /x/ , (void 0), (void 0), (void 0),  /x/ ,  /x/ , false, false, false, (void 0), false, (void 0), (void 0),  /x/ , false, false,  /x/ , (void 0), false, (void 0), false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false,  /x/ , false, (void 0),  /x/ ,  /x/ ,  /x/ , false, false,  /x/ , false,  /x/ , false, (void 0),  /x/ , false,  /x/ ,  /x/ , (void 0),  /x/ , false,  /x/ , false,  /x/ , (void 0), (void 0), (void 0), (void 0), false, (void 0), (void 0), (void 0),  /x/ ,  /x/ ,  /x/ ]); \");");
+Running threw: ReferenceError: Can't find variable: g0
+
+/*FRC-fuzzSeed-193650365*/count=47; tryItOut("mathy2 = (function(x, y) { return mathy0((((( + Math.fround((Math.max(( + (((x | 0) ? y : (( + Math.log10(( + x))) | 0)) | 0)), y) === ( ~ (-Number.MIN_VALUE ? (y | 0) : Math.cos(x)))))) >>> 0) != ((y | 0) + mathy0(x, y))) | 0), ((((Math.max(x, ((Math.expm1((y | 0)) | 0) >>> 0)) >>> 0) >>> 0) == (( + Math.cos(Math.cos(mathy1(y, Number.MAX_VALUE)))) | 0)) | 0)); }); testMathyFunction(mathy2, [-1/0, -0x080000001, -(2**53), 1.7976931348623157e308, Number.MAX_VALUE, Number.MIN_VALUE, 1, -0x100000001, -0x0ffffffff, 0x0ffffffff, -(2**53+2), -0, 0x100000000, -Number.MIN_SAFE_INTEGER, 0x100000001, Math.PI, -0x07fffffff, -Number.MAX_VALUE, -0x080000000, -Number.MIN_VALUE, 2**53+2, 0x080000000, -Number.MAX_SAFE_INTEGER, 0, 2**53-2, 0x07fffffff, -0x100000000, 2**53, Number.MIN_SAFE_INTEGER, 0/0, 42, 1/0, -(2**53-2), 0.000000000000001, 0x080000001, Number.MAX_SAFE_INTEGER]); ");
+488524734
+
+/*FRC-fuzzSeed-193650365*/count=48; tryItOut("\"use strict\"; o0.v1 = -Infinity;");
+Running threw: ReferenceError: Can't find variable: o0
+
+/*FRC-fuzzSeed-193650365*/count=49; tryItOut("mathy1 = (function(stdlib, foreign, heap){ \"use asm\";   var ff = foreign.ff;\n  var Float32ArrayView = new stdlib.Float32Array(heap);\n  function f(d0, i1)\n  {\n    d0 = +d0;\n    i1 = i1|0;\n    (Float32ArrayView[((-0x8000000)+(0xfa1dfe4e)-(/*FFI*/ff(((d0)), ((0.001953125)), ((d0)), ((-512.0)), ((288230376151711740.0)))|0)) >> 2]) = ((-262145.0));\n    d0 = (-9223372036854776000.0);\n    return +((d0));\n  }\n  return f; })(this, {ff: (Function).bind}, new ArrayBuffer(4096)); ");
+Plain eval!
+
+/*FRC-fuzzSeed-193650365*/count=50; tryItOut("mathy3 = (function(x, y) { return Math.pow((mathy2((( + mathy1(( + x), ( ! (((Math.fround(mathy0(Math.fround(x), Math.fround(y))) | 0) + (x | 0)) | 0)))) >>> 0), ((Math.log((( + Math.sin(( + Math.sin(x)))) | 0)) | 0) | 0)) >>> 0), (Math.fround((( ! Math.fround(x)) | 0)) | 0)); }); testMathyFunction(mathy3, /*MARR*/[new String(''), function(){}, function(){}, new String(''), false, false, function(){}, function(){}, function(){},  '\\0' , new String(''), new String(''),  '\\0' , new String(''),  '\\0' , false, new String(''), false, new String(''), new String(''), new String(''),  '\\0' ,  '\\0' , new String(''), new String(''), false, false, function(){}, function(){}, function(){}, function(){}, function(){}, function(){}, function(){}, function(){}, function(){}, function(){}, function(){}, function(){}, function(){}, function(){}, function(){},  '\\0' , false, function(){}, new String(''),  '\\0' ,  '\\0' ,  '\\0' , function(){},  '\\0' , false, new String(''),  '\\0' ,  '\\0' ,  '\\0' ,  '\\0' ,  '\\0' , false, new String(''), function(){}, new String(''), new String(''), false,  '\\0' , function(){}, new String(''), new String(''), function(){},  '\\0' ,  '\\0' , new String(''), function(){},  '\\0' , function(){},  '\\0' , function(){},  '\\0' , new String(''), new String(''),  '\\0' , false,  '\\0' , function(){}, new String(''),  '\\0' ,  '\\0' , function(){}, new String(''),  '\\0' , new String(''), false,  '\\0' ,  '\\0' , function(){}, false, function(){}, new String(''), new String(''), false, false, new String(''), function(){}, function(){}, false, false, function(){}, new String(''), false, new String(''), false, function(){}, new String(''), function(){}, new String(''),  '\\0' , new String(''), false,  '\\0' ,  '\\0' ,  '\\0' , new String(''),  '\\0' , new String(''), function(){}, new String(''), false, new String(''), new String(''), false, function(){}, false,  '\\0' , function(){}, false, false, function(){}, false, new String(''), function(){},  '\\0' , new String(''), false, new String(''), function(){}, function(){}, new String(''),  '\\0' ,  '\\0' , new String(''), function(){}, false, function(){},  '\\0' ,  '\\0' ,  '\\0' , new String(''),  '\\0' ,  '\\0' , function(){}, function(){}, function(){}, function(){}, function(){}, new String(''), new String(''), new String(''), function(){},  '\\0' ,  '\\0' ,  '\\0' ,  '\\0' ,  '\\0' ,  '\\0' ,  '\\0' ,  '\\0' ,  '\\0' , new String(''), false, function(){},  '\\0' ,  '\\0' , new String(''), new String('')]); ");
+About to recompile, using eval hack.
+-1374361172
+
+That took 1065ms!
+/*FRC-fuzzSeed-193650365*/count=51; tryItOut("mathy1 = (function(x, y) { \"use strict\"; return Math.imul(( + ( ~ ( + (Math.min((y | 0), x) | 0)))), (mathy0(y, Math.fround(y)) - (Math.log1p((((Math.fround(( ~ Math.fround(Math.fround((Math.fround(x) + Math.fround(x)))))) | 0) >>> (y >>> Math.fround(Math.fround(Math.pow(Math.fround(x), Math.fround(( ~ y))))))) | 0)) | 0))); }); testMathyFunction(mathy1, [2**53-2, -(2**53-2), Math.PI, -1/0, Number.MIN_SAFE_INTEGER, -Number.MIN_VALUE, -Number.MAX_VALUE, -0x080000000, 0x080000001, -0x100000000, -Number.MAX_SAFE_INTEGER, 0x080000000, -0, 0/0, 0.000000000000001, 1, -0x100000001, -(2**53), 42, -0x07fffffff, Number.MAX_VALUE, 0x07fffffff, 0, Number.MIN_VALUE, 0x0ffffffff, 1/0, -Number.MIN_SAFE_INTEGER, -(2**53+2), -0x0ffffffff, 0x100000001, 2**53+2, 0x100000000, Number.MAX_SAFE_INTEGER, 1.7976931348623157e308, 2**53, -0x080000001]); ");
+-34924060
+
+/*FRC-fuzzSeed-193650365*/count=52; tryItOut("Array.prototype.forEach.call(a2, (function() { v1 = (h1 instanceof m2); return h1; }));");
+Running threw: ReferenceError: Can't find variable: a2
+
+/*FRC-fuzzSeed-193650365*/count=53; tryItOut("\"use strict\"; mathy3 = (function(x, y) { return Math.sign(((Math.expm1(( - ( - ( + y)))) | 0) << (Math.hypot(( + Math.ceil((mathy1((x | 0), (Math.acosh(0) | 0)) | 0))), ( - (Math.fround(( - Math.fround(Math.log10(0x100000001)))) >>> 0))) >>> 0))); }); testMathyFunction(mathy3, [42, -0, 0x080000001, 0/0, -0x080000000, -0x080000001, -0x100000001, 0x100000001, 0x080000000, -(2**53), Number.MAX_SAFE_INTEGER, 0.000000000000001, 1/0, -Number.MIN_SAFE_INTEGER, 0x100000000, -(2**53-2), -(2**53+2), 1, -1/0, Number.MAX_VALUE, 0x07fffffff, 2**53, -Number.MAX_VALUE, 0x0ffffffff, 0, 1.7976931348623157e308, -0x0ffffffff, -0x100000000, 2**53-2, -Number.MAX_SAFE_INTEGER, Number.MIN_SAFE_INTEGER, Math.PI, -0x07fffffff, -Number.MIN_VALUE, Number.MIN_VALUE, 2**53+2]); ");
+-1793404484
+
+/*FRC-fuzzSeed-193650365*/count=54; tryItOut("\"use strict\"; s1 += 'x';");
+Running threw: ReferenceError: Can't find variable: s1
+
+/*FRC-fuzzSeed-193650365*/count=55; tryItOut("mathy3 = (function(x, y) { return Math.imul(((((( ! (( ! Math.fround(mathy2(Math.fround(x), (2**53+2 >>> 0)))) | 0)) | 0) >>> 0) - Math.fround(Math.atanh(mathy0(( + Math.acos(x)), (Math.max(x, y) >>> 0))))) >>> 0), ( - Math.fround(Math.atan2(Math.fround((Math.sqrt((x >>> 0)) >>> 0)), Math.fround(x))))); }); testMathyFunction(mathy3, [1.7976931348623157e308, -0, 42, -(2**53+2), -0x080000000, -0x100000000, -Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER, -0x0ffffffff, -0x100000001, 2**53-2, 0x080000000, -1/0, -Number.MIN_VALUE, 0.000000000000001, 0/0, Number.MAX_VALUE, 0x100000001, 0x080000001, Math.PI, 0x100000000, 1/0, -Number.MIN_SAFE_INTEGER, Number.MIN_SAFE_INTEGER, 0x0ffffffff, -Number.MAX_VALUE, -(2**53-2), 0, -(2**53), 1, -0x07fffffff, 2**53, Number.MIN_VALUE, -0x080000001, 2**53+2, 0x07fffffff]); ");
+-1358792212
+
+/*FRC-fuzzSeed-193650365*/count=56; tryItOut("v0 = evalcx(\"this\", g2);");
+Running threw: ReferenceError: Can't find variable: evalcx
+
+/*FRC-fuzzSeed-193650365*/count=57; tryItOut("\"use strict\"; ((yield x|=/(?=(?:(\\W)))+/gy));");
+Compiling threw: SyntaxError: Unexpected keyword 'yield'. Cannot use yield expression out of generator.
+
+/*FRC-fuzzSeed-193650365*/count=58; tryItOut("\"use strict\"; t1.set(t2, 2);");
+Running threw: ReferenceError: Can't find variable: t1
+
+/*FRC-fuzzSeed-193650365*/count=59; tryItOut("mathy4 = (function(x, y) { return Math.hypot((((y >>> ( + y)) | 0) && (Math.PI , x)), Math.pow(((((Math.sign((( ~ (y >>> 0)) | 0)) | 0) >>> 0) && (( ~ ( + Math.imul(( + Math.fround((y ** y))), ( + -Number.MIN_SAFE_INTEGER)))) >>> 0)) >>> 0), ( ~ (Math.imul((y >>> 0), (0x100000000 >>> 0)) >>> 0)))); }); testMathyFunction(mathy4, [-Number.MIN_SAFE_INTEGER, 0.000000000000001, -0x100000001, 0x100000000, -0x0ffffffff, -0x100000000, -0, 2**53-2, Number.MAX_VALUE, -0x080000001, 2**53+2, 0x100000001, Number.MIN_SAFE_INTEGER, 2**53, 0x07fffffff, Math.PI, 0x080000001, -1/0, 1, Number.MAX_SAFE_INTEGER, -Number.MAX_VALUE, Number.MIN_VALUE, -Number.MAX_SAFE_INTEGER, -(2**53+2), -0x080000000, 0/0, -(2**53), -0x07fffffff, 1.7976931348623157e308, -(2**53-2), 0, -Number.MIN_VALUE, 1/0, 42, 0x080000000, 0x0ffffffff]); ");
+393482584
+
+/*FRC-fuzzSeed-193650365*/count=60; tryItOut("delete o2[\"wrappedJSObject\"];");
+Running threw: ReferenceError: Can't find variable: o2
+
+/*FRC-fuzzSeed-193650365*/count=61; tryItOut("/* no regression tests found */");
+
+/*FRC-fuzzSeed-193650365*/count=62; tryItOut("/*infloop*/M: for  each(x in -0.__defineSetter__(\"y\", (new Function(\"print(x);\")))) {t1[3] = \"\\uE8A3\";print(x); }");
+Compiling threw: SyntaxError: Unexpected identifier 'each'. Expected '(' to start a for-loop header.
+
+/*FRC-fuzzSeed-193650365*/count=63; tryItOut("\"use strict\"; Object.defineProperty(this, \"v1\", { configurable: (x % 32 != 0), enumerable: (x % 8 != 4),  get: function() {  return new Number(a1); } });");
+Running threw: ReferenceError: Can't find variable: x
+
+/*FRC-fuzzSeed-193650365*/count=64; tryItOut("p0 + v1;");
+Running threw: ReferenceError: Can't find variable: p0
+
+/*FRC-fuzzSeed-193650365*/count=65; tryItOut("e1.has(t1);");
+Running threw: ReferenceError: Can't find variable: e1
+
+/*FRC-fuzzSeed-193650365*/count=66; tryItOut("/*infloop*/M:for(b; (x ^= (x) = null); let (y = ([new RegExp(\"(?=(?=\\\\W*)\\\\1*?)\", \"m\")])) false) {/* no regression tests found */Object.defineProperty(this, \"h1\", { configurable: (x % 2 == 1), enumerable: (yield \"\\u3CE6\"),  get: function() {  return ({getOwnPropertyDescriptor: function(name) { m2.has(this.v1);; var desc = Object.getOwnPropertyDescriptor(o2); desc.configurable = true; return desc; }, getPropertyDescriptor: function(name) { s1 = new String;; var desc = Object.getPropertyDescriptor(o2); desc.configurable = true; return desc; }, defineProperty: function(name, desc) { a2 = a1[3];; Object.defineProperty(o2, name, desc); }, getOwnPropertyNames: function() { s1 = Array.prototype.join.apply(o0.a1, [t0]);; return Object.getOwnPropertyNames(o2); }, delete: function(name) { a0[v2];; return delete o2[name]; }, fix: function() { this.a1.push(s1, this.a2);; if (Object.isFrozen(o2)) { return Object.getOwnProperties(o2); } }, has: function(name) { g1.e2.has(e2);; return name in o2; }, hasOwn: function(name) { v1 = g2.eval(\"Array.prototype.pop.call(a2);\");; return Object.prototype.hasOwnProperty.call(o2, name); }, get: function(receiver, name) { s0 += s0;; return o2[name]; }, set: function(receiver, name, val) { return f1; o2[name] = val; return true; }, iterate: function() { v2 = Object.prototype.isPrototypeOf.call(e0, v1);; return (function() { for (var name in o2) { yield name; } })(); }, enumerate: function() { ;; var result = []; for (var name in o2) { result.push(name); }; return result; }, keys: function() { a2 = Array.prototype.map.apply(a1, [(function(j) { if (j) { try { a0[v1]; } catch(e0) { } v1 = Object.prototype.isPrototypeOf.call(g1, h2); } else { try { Array.prototype.push.apply(a0, [b1]); } catch(e0) { } try { o0.h2.iterate = (function(j) { if (j) { try { Object.defineProperty(this, \"v0\", { configurable: (x % 52 != 18), enumerable:  /x/ ,  get: function() {  return o2.a2.length; } }); } catch(e0) { } try { v2 = Object.prototype.isPrototypeOf.call(a1, o0); } catch(e1) { } /*ODP-1*/Object.defineProperty(s2, \"__iterator__\", ({configurable: true, enumerable: (b % 3 == 2)})); } else { try { t1.set(a0, ({valueOf: function() { print( /x/g );return 16; }})); } catch(e0) { } try { Array.prototype.sort.apply(a2, [(function mcc_() { var rapygq = 0; return function() { ++rapygq; f2(/*ICCD*/rapygq % 7 == 6);};})(), this.i0, b1]); } catch(e1) { } try { this.s0 + ''; } catch(e2) { } var g1.e1 = new Set(this.s0); } }); } catch(e1) { } m1 + g0; } })]);; return Object.keys(o2); } }); } }); }");
+Compiling threw: SyntaxError: Unexpected keyword 'false'. Expected ')' to end a for-loop header.
+
+/*FRC-fuzzSeed-193650365*/count=67; tryItOut("\"use strict\"; mathy0 = (function(x, y) { return Math.trunc(( ~ Math.fround((x * Math.pow(( + ( + (( + x) % ( + ( + ( - x)))))), ( - (((x >>> 0) << (Math.sign(y) >>> 0)) >>> 0))))))); }); testMathyFunction(mathy0, [-Number.MAX_VALUE, 0x07fffffff, -(2**53), 0, 0x080000000, Math.PI, -0x100000001, -0x07fffffff, 2**53-2, -Number.MAX_SAFE_INTEGER, 1.7976931348623157e308, -Number.MIN_SAFE_INTEGER, 0x100000000, -0, -(2**53-2), Number.MIN_VALUE, 2**53, 0x0ffffffff, 1, Number.MAX_VALUE, Number.MAX_SAFE_INTEGER, -0x080000001, 0.000000000000001, -0x100000000, 2**53+2, Number.MIN_SAFE_INTEGER, -Number.MIN_VALUE, -(2**53+2), 0x100000001, -0x080000000, -1/0, 0x080000001, 0/0, 42, 1/0, -0x0ffffffff]); ");
+290103196
+
+/*FRC-fuzzSeed-193650365*/count=68; tryItOut("mathy1 = (function(x, y) { return ( + (( ! ((-0x080000000 == Math.fround((Math.fround(y) - (((-Number.MIN_VALUE | 0) << (Math.round((y >>> 0)) >>> 0)) | 0)))) | 0)) >>> 0)); }); testMathyFunction(mathy1, [2**53+2, 0x080000001, 0, -0x100000000, 1, 0x07fffffff, -Number.MIN_SAFE_INTEGER, Number.MIN_VALUE, -(2**53-2), 2**53, 0.000000000000001, 0x0ffffffff, 1/0, -(2**53+2), -0x080000000, 0x100000000, -0x080000001, -(2**53), -Number.MIN_VALUE, -Number.MAX_VALUE, Number.MAX_VALUE, -0x100000001, -0, Number.MIN_SAFE_INTEGER, 42, -Number.MAX_SAFE_INTEGER, -1/0, -0x07fffffff, 0x100000001, Math.PI, 0x080000000, -0x0ffffffff, 0/0, 2**53-2, Number.MAX_SAFE_INTEGER, 1.7976931348623157e308]); ");
+-1705188720
+
+/*FRC-fuzzSeed-193650365*/count=69; tryItOut("\"use strict\"; mathy3 = (function(stdlib, foreign, heap){ \"use asm\";   var ff = foreign.ff;\n  var Uint16ArrayView = new stdlib.Uint16Array(heap);\n  var Uint32ArrayView = new stdlib.Uint32Array(heap);\n  function f(i0, i1)\n  {\n    i0 = i0|0;\n    i1 = i1|0;\n    {\n      i0 = (i0);\n    }\n    i0 = (((((((0xcbc35b41)+(0xfafabbb2)+(0x9ace477d))>>>(-(i1))) < (((-0x8000000) / (-0x8000000))>>>((-0x8000000)-(0xe59e2927)+(0x4bd857d))))) >> ((i1)-(/*FFI*/ff()|0))) == (((i0)+((((0x6be328d7))>>>((0xf6c9a4c2))) != (0x0))-(i0)) << ((i1))));\n    {\n      i1 = (i1);\n    }\n    i1 = (i1);\n    (Uint16ArrayView[((i1)+((((0xfc5cb389))>>>((0xf927e646))) > (((0xfc014286))>>>((0xf9102b65))))-(i1)) >> 1]) = ((i1)*0x7481e);\n    i0 = ((0xa0d2a16c) <= (((Uint32ArrayView[(((0xd65ffe65))-(/*FFI*/ff()|0)+(i1)) >> 2]))>>>((i0))));\n    {\n      i1 = (i1);\n    }\n    i0 = ((((i1))>>>((((((0xfbcd254c)) >> ((0xeb304847)))) ? (i1) : (i1))-(i1))) != (((i1)-(x =  /x/g  &= ((makeFinalizeObserver('tenured')))))>>>(((((/*FFI*/ff(((1.0625)), ((-68719476737.0)), ((257.0)), ((18446744073709552000.0)), ((131071.0)), ((-134217729.0)))|0)*0x802d)|0) != (((i1)) & (((140737488355329.0) < (-0.00390625)))))-(i0))));\n    return ((-0x37e57*(i0)))|0;\n  }\n  return f; })(this, {ff: function(y) { \"use strict\"; return allocationMarker()\u000c ** new RegExp(\"(?!\\\\2|\\\\x2a*{2,5})\", \"gyim\") }}, new SharedArrayBuffer(4096)); testMathyFunction(mathy3, [-Number.MAX_VALUE, -0, Number.MAX_SAFE_INTEGER, -0x0ffffffff, 0x080000001, -(2**53-2), 2**53+2, Number.MAX_VALUE, 2**53-2, -1/0, 0x07fffffff, 0x0ffffffff, Math.PI, 0x100000001, -0x080000000, -0x080000001, 0, -0x100000001, 2**53, Number.MIN_VALUE, -0x100000000, -(2**53), 0.000000000000001, -Number.MAX_SAFE_INTEGER, -Number.MIN_VALUE, 42, 1, 1.7976931348623157e308, -(2**53+2), -Number.MIN_SAFE_INTEGER, 0/0, Number.MIN_SAFE_INTEGER, 0x080000000, -0x07fffffff, 0x100000000, 1/0]); ");
+Running threw: TypeError: undefined is not an object (evaluating 'new stdlib.Uint16Array')
+
+/*FRC-fuzzSeed-193650365*/count=70; tryItOut("\"use strict\"; /*infloop*/ for  each(arguments.callee.caller.arguments in (let (z) window)) {print(x);\np2 + '';\nArray.prototype.unshift.apply(a1, [a2, this.f1]); }");
+Compiling threw: SyntaxError: Unexpected identifier 'each'. Expected '(' to start a for-loop header.
+
+/*FRC-fuzzSeed-193650365*/count=71; tryItOut("\"use strict\"; e0.__proto__ = o0.o1.m0;");
+Running threw: ReferenceError: Can't find variable: e0
+
+/*FRC-fuzzSeed-193650365*/count=72; tryItOut("/* no regression tests found */");
+Plain eval!
+
+/*FRC-fuzzSeed-193650365*/count=73; tryItOut("if((x % 30 != 28)) /*RXUB*/var r = new RegExp(\"\\\\1?\", \"im\"); var s = \"0\"; print(s.search(r));  else {{t2 = new Float64Array(t0);g1.offThreadCompileScript(\"\\\"\\\\u529B\\\";\"); }for (var v of this.g0) { try { v1 = undefined; } catch(e0) { } v1 = (x % 3 != 1); } }");
+Compiling threw: SyntaxError: Unexpected keyword 'else'
+
+/*FRC-fuzzSeed-193650365*/count=74; tryItOut("mathy5 = (function(x, y) { \"use strict\"; return (Math.fround((Math.acosh(x) & ( + y))) && ( ! ( - (Math.abs(Math.fround((Math.cos(( + (x + -Number.MIN_VALUE))) | 0))) >>> 0)))); }); ");
+
+/*FRC-fuzzSeed-193650365*/count=75; tryItOut("mathy1 = (function(stdlib, foreign, heap){ \"use asm\";   var NaN = stdlib.NaN;\n  var ff = foreign.ff;\n  function f(d0, i1)\n  {\n    d0 = +d0;\n    i1 = i1|0;\n    return (((((((NaN) != (+((-144115188075855870.0))))-(/*FFI*/ff()|0))>>>(((0xc03c0656) < (((0xffffffff))>>>((-0x8000000)))))) > ((0x54578*((-0x8000000) ? (0xa90e599d) : (0xeef2ff2d)))>>>(((~~(2147483649.0))))))+(i1)+(i1)))|0;\n  }\n  return f; })(this, {ff: (new Function(\"Array.prototype.pop.call(g1.a2);\"))}, new SharedArrayBuffer(4096)); testMathyFunction(mathy1, /*MARR*/[-22, -22, -22,  \"use strict\" , -22,  \"use strict\" , new String('q'), -22, new String('q')]); ");
+-1131445059
+
+/*FRC-fuzzSeed-193650365*/count=76; tryItOut("for(b in ((intern(Array.prototype.shift))((4277)))){v0 = evaluate(\"function f2(m0) \\\"use asm\\\";   function f(d0, d1)\\n  {\\n    d0 = +d0;\\n    d1 = +d1;\\n    var d2 = 524287.0;\\n    var d3 = -1.001953125;\\n    {\\n      d2 = (+(0x1e1121ce));\\n    }\\n    return ((((((1)) ^ ((0x24de2197))))-(-0x8000000)))|0;\\n  }\\n  return f;\", ({ global: o1.g1, fileName: 'evaluate.js', lineNumber: 42, isRunOnce: new (makeFinalizeObserver('nursery')).toPrecision((\"\\u35B9\".__defineSetter__(\"NaN\", function (e, ...b)window))((eval >= window), this)), noScriptRval: true, sourceIsLazy: false, catchTermination: true }));if(true) (this); else {h2.getPropertyDescriptor = (function() { try { /*ODP-1*/Object.defineProperty(a0, \"toGMTString\", ({enumerable: (x % 5 == 3)})); } catch(e0) { } o0.a2[15] = /(?!(?:[^])*?)/gm; return b1; });/* no regression tests found */ } }");
+Compiling threw: SyntaxError: Unexpected identifier 'window'. Expected an opening '{' at the start of a function body.
+
+/*FRC-fuzzSeed-193650365*/count=77; tryItOut("testMathyFunction(mathy2, [2**53, Number.MIN_VALUE, -1/0, 0x100000000, Math.PI, 1/0, 0x100000001, 0.000000000000001, -0x0ffffffff, Number.MIN_SAFE_INTEGER, 0, -0x080000001, 1.7976931348623157e308, 42, 0x07fffffff, -Number.MIN_SAFE_INTEGER, -(2**53+2), -0, 1, -Number.MIN_VALUE, 2**53-2, 0x0ffffffff, 0x080000000, -Number.MAX_VALUE, -0x080000000, Number.MAX_SAFE_INTEGER, 2**53+2, -(2**53), 0/0, 0x080000001, -Number.MAX_SAFE_INTEGER, -(2**53-2), -0x100000001, Number.MAX_VALUE, -0x07fffffff, -0x100000000]); ");
+1142345404
+
+/*FRC-fuzzSeed-193650365*/count=78; tryItOut("for (var p in b2) { try { o1.v2 = evaluate(\"function f1(a2)  { \\\"use strict\\\"; return (()([x], this.__defineGetter__(\\\"x\\\", Date.prototype.getSeconds))) } \", ({ global: g2, fileName: 'evaluate.js', lineNumber: 42, isRunOnce: x, noScriptRval: (4277), sourceIsLazy: false, catchTermination: (x % 2 != 1), element: o1, sourceMapURL: s1 })); } catch(e0) { } m0.__proto__ = f2; }");
+Running threw: ReferenceError: Can't find variable: b2
+
+/*FRC-fuzzSeed-193650365*/count=79; tryItOut("s2 = new String;function d = z(x = ((4277).__defineGetter__(\"window\", EvalError.prototype.toString)), x, x, d, NaN, x = x, x, c = window, x, window, x, a, a, getter, e, \u3056, x, d, NaN, x = window, x, w, this.x, y, z, x, w =  /x/g , x, b, e = [1,,], NaN, b, a, x, x = 7, x, x, x, b, x, x = [], a =  \"\" , w, y, e, y, \u3056, x, eval = window, c, eval, x, x, z, x = \"\\u02CF\", z, z, x, e = new RegExp(\".\\\\2{1}|.|[^]*[]\\\\B?|(^|\\\\S+)|\\\\2\\\\b\", \"\"), a, c, x, NaN, x, -22, x = window, NaN, e =  /x/ , d, x, this.eval, x =  \"\" , window, eval, e = this, eval, b, \"14\", x =  /x/g , x, z =  \"\" , x, x = \"\\u0C57\", z, y =  \"\" , x, eval =  /x/g , x) { print((/*MARR*/[NaN, new Number(1), new Number(1), new String('q'), NaN, NaN, NaN, new Number(1), NaN, new Number(1), NaN, new String('q'), new Number(1), new Number(1), new Number(1), new Number(1), new Number(1), new Number(1), new String('q'), NaN, NaN, new Number(1), new Number(1), new String('q'), new String('q'), new Number(1), new Number(1), new String('q'), new Number(1), new String('q'), new String('q'), new String('q'), NaN, new String('q'), new Number(1), new Number(1), NaN, new Number(1), new String('q'), new String('q'), new String('q'), new Number(1), new Number(1), new Number(1), new Number(1), new String('q'), new String('q'), new Number(1), new String('q'), new Number(1), new Number(1), new Number(1), new String('q'), new Number(1), NaN, new Number(1), new Number(1), NaN, new String('q'), NaN, new Number(1), new Number(1), new Number(1), new Number(1), NaN, new String('q'), new String('q'), NaN, new String('q'), new Number(1), NaN, NaN, new String('q'), new Number(1)].filter(/*wrap3*/(function(){ \"use strict\"; var xydzrl = \"\\uC474\"; (offThreadCompileScript)(); }), (eval(\"\\\"use strict\\\"; (false);\"))))); } /*MXX2*/g2.WeakSet.prototype.has = i1;");
+Compiling threw: SyntaxError: Unexpected token '='. Expected an opening '(' before a function's parameter list.
+
+/*FRC-fuzzSeed-193650365*/count=80; tryItOut("e1 + '';");
+Running threw: ReferenceError: Can't find variable: e1
+
+/*FRC-fuzzSeed-193650365*/count=81; tryItOut("\"use strict\"; /*hhh*/function bqvloh(x = -0 <= /[\u49f2-\u7f80]/gym){((\"\\u61CB\".__defineSetter__(\"window\", decodeURI)));}bqvloh(x, (new (((void shapeOf(2))))(x = Proxy.createFunction(({/*TOODEEP*/})(this), ({})),  '' )));");
+Running threw: ReferenceError: Can't find variable: x
+
+/*FRC-fuzzSeed-193650365*/count=82; tryItOut("v1 = Object.prototype.isPrototypeOf.call(m2, e2);");
+Running threw: ReferenceError: Can't find variable: m2
+
+/*FRC-fuzzSeed-193650365*/count=83; tryItOut("mathy2 = (function(x, y) { return mathy1(mathy0(((((y >>> 0) ^ ( ~ y)) !== Math.fround(Math.imul(( + Math.fround(( - (Math.expm1(y) | 0)))), ( + Math.fround(Math.sin(( + Math.hypot(( + x), -1/0)))))))) | 0), (( ~ (Math.min(((Math.pow((y | 0), ( + Math.atan2(y, Math.pow(-0, y)))) | 0) >>> 0), y) >>> 0)) | 0)), ( + Math.imul(( + (mathy0(y, Math.hypot((0x0ffffffff >= 0.000000000000001), y)) ^ ( + (( + Math.trunc(Math.log2(x))) + ( + x))))), Math.fround((mathy1(Math.fround(x), mathy1(x, (x >>> 0))) & Math.min((Math.ceil((Math.imul(Math.fround(y), x) >>> 0)) >>> 0), -0x07fffffff)))))); }); testMathyFunction(mathy2, [-0x07fffffff, -0, -0x0ffffffff, Math.PI, -Number.MIN_SAFE_INTEGER, 0x080000001, -Number.MAX_VALUE, 1, 0x0ffffffff, 1/0, 0x07fffffff, Number.MIN_VALUE, 2**53+2, 0.000000000000001, -0x080000000, 0x080000000, -Number.MIN_VALUE, 42, -1/0, -0x100000001, Number.MIN_SAFE_INTEGER, 2**53, 1.7976931348623157e308, -(2**53-2), 0, -0x100000000, 0/0, Number.MAX_SAFE_INTEGER, -Number.MAX_SAFE_INTEGER, -(2**53+2), Number.MAX_VALUE, 2**53-2, 0x100000001, 0x100000000, -0x080000001, -(2**53)]); ");
+1142345404
+
+/*FRC-fuzzSeed-193650365*/count=84; tryItOut("o1.h2.hasOwn = f0;");
+Running threw: ReferenceError: Can't find variable: o1
+
+/*FRC-fuzzSeed-193650365*/count=85; tryItOut("mathy1 = (function(x, y) { \"use strict\"; return Math.expm1(Math.imul((Math.tan((x >>> 0)) | 0), (Math.atanh((y | 0)) | 0))); }); testMathyFunction(mathy1, [2**53, -1/0, -Number.MIN_SAFE_INTEGER, 0x080000001, 0x080000000, Number.MAX_SAFE_INTEGER, -Number.MAX_SAFE_INTEGER, 0, 0/0, 0x100000001, Number.MIN_SAFE_INTEGER, -(2**53-2), Number.MIN_VALUE, 42, -0x07fffffff, -0x100000001, -0x0ffffffff, 1, 0x100000000, -0x080000001, 0x0ffffffff, Number.MAX_VALUE, -Number.MIN_VALUE, -0, 0.000000000000001, 1.7976931348623157e308, 1/0, 2**53-2, 0x07fffffff, -0x080000000, -0x100000000, Math.PI, 2**53+2, -Number.MAX_VALUE, -(2**53+2), -(2**53)]); ");
+-1358792212
+
+/*FRC-fuzzSeed-193650365*/count=86; tryItOut("/*RXUB*/var r = {} = allocationMarker(); var s = \"a\\u0095\\u07d9a\\u0095\\u07d9\"; print(r.test(s)); ");
+Running threw: ReferenceError: Can't find variable: allocationMarker
+
+/*FRC-fuzzSeed-193650365*/count=87; tryItOut("\"use strict\"; h0 = {};");
+Running threw: ReferenceError: Can't find variable: h0
+
+/*FRC-fuzzSeed-193650365*/count=88; tryItOut("mathy1 = (function(x, y) { return (Math.atanh(Math.fround(Math.trunc(Math.fround((( ! ( ~ x)) | 0))))) ** (mathy0((Math.atan2(y, ((Math.trunc(-0x07fffffff) | 0) >> (y << Math.atan2(x, x)))) | 0), (Math.fround(Math.fround(( + (0x0ffffffff != ( + Math.fround(Math.hypot(Math.fround((( + ( ! ( + Number.MAX_SAFE_INTEGER))) == y)), Math.fround((( - ((x ? y : y) | 0)) | 0))))))))) | 0)) | 0)); }); testMathyFunction(mathy1, [0x080000001, 0/0, 2**53, 1/0, -Number.MAX_VALUE, 0x080000000, -0x100000001, -(2**53-2), -0x080000001, -0x07fffffff, 0x100000000, 2**53+2, 1.7976931348623157e308, Number.MAX_VALUE, -0x0ffffffff, 0x07fffffff, -(2**53), Number.MIN_SAFE_INTEGER, -Number.MIN_VALUE, -Number.MIN_SAFE_INTEGER, Math.PI, -0x100000000, 0x0ffffffff, 42, -1/0, -Number.MAX_SAFE_INTEGER, 0x100000001, 1, 0, Number.MIN_VALUE, -0x080000000, Number.MAX_SAFE_INTEGER, 2**53-2, 0.000000000000001, -(2**53+2), -0]); ");
+216795116
+
+/*FRC-fuzzSeed-193650365*/count=89; tryItOut("o1.a0.shift(m2);");
+Running threw: ReferenceError: Can't find variable: o1
+
+/*FRC-fuzzSeed-193650365*/count=90; tryItOut("{ void 0; bailAfter(2); } let(a) ((function(){[,,];})());");
+Running threw: ReferenceError: Can't find variable: bailAfter
+
+/*FRC-fuzzSeed-193650365*/count=91; tryItOut("mathy2 = (function(x, y) { \"use strict\"; return Math.tan(mathy0(( + ( - ( + Math.fround(( ! ((y && x) >>> 0)))))), (Math.hypot((Math.imul(x, ( + y)) >>> 0), (Math.tanh((x ? x : x)) >>> 0)) >>> 0))); }); testMathyFunction(mathy2, [null, objectEmulatingUndefined(), false, (function(){return 0;}), ({valueOf:function(){return 0;}}), /0/, 1, (new String('')), (new Boolean(false)), ({valueOf:function(){return '0';}}), true, '0', -0, '', 0, NaN, [], (new Number(-0)), '/0/', '\\0', (new Boolean(true)), ({toString:function(){return '0';}}), [0], (new Number(0)), undefined, 0.1]); ");
+Running threw: ReferenceError: Can't find variable: objectEmulatingUndefined
+
+/*FRC-fuzzSeed-193650365*/count=92; tryItOut("t1 = t0.subarray(9, 5);");
+Running threw: ReferenceError: Can't find variable: t0
+
+/*FRC-fuzzSeed-193650365*/count=93; tryItOut("o2.t1[(4277).yoyo([] = {})] = t0;");
+Running threw: ReferenceError: Can't find variable: o2
+
+/*FRC-fuzzSeed-193650365*/count=94; tryItOut("\"use asm\"; testMathyFunction(mathy3, [-0x100000000, 0x0ffffffff, 1.7976931348623157e308, -1/0, -0x07fffffff, 2**53, 0x080000001, 42, -Number.MIN_SAFE_INTEGER, 2**53+2, Number.MAX_VALUE, -(2**53+2), 2**53-2, 0x07fffffff, -Number.MAX_VALUE, -0x080000001, 1/0, 0, 0x100000000, Number.MIN_SAFE_INTEGER, 0x100000001, -(2**53-2), Number.MAX_SAFE_INTEGER, 0x080000000, -0x080000000, -(2**53), 0/0, 1, Math.PI, -0x100000001, 0.000000000000001, -Number.MIN_VALUE, Number.MIN_VALUE, -Number.MAX_SAFE_INTEGER, -0, -0x0ffffffff]); ");
+-1358792212
+
+/*FRC-fuzzSeed-193650365*/count=95; tryItOut("\"use strict\"; mathy3 = (function(x, y) { \"use asm\"; return ((((Math.tanh((y >>> 0)) >>> 0) | 0) <= (Math.exp(( + ( + ( - Math.max(( + 1/0), ( + x)))))) | 0)) - (Math.min(((mathy2((Math.log10(42) | 0), Math.fround(x)) | 0) >>> 0), (((-Number.MIN_SAFE_INTEGER <= y) <= y) >>> 0)) >>> 0)); }); testMathyFunction(mathy3, [1.7976931348623157e308, Number.MIN_SAFE_INTEGER, -Number.MAX_VALUE, 2**53, -0x080000000, -1/0, Number.MIN_VALUE, 0x080000001, 1, 42, 2**53+2, Number.MAX_VALUE, 0.000000000000001, 0x100000000, 2**53-2, 0x080000000, 0/0, 0x0ffffffff, -0x100000001, 0x07fffffff, -0x07fffffff, -(2**53), -Number.MAX_SAFE_INTEGER, 0x100000001, -(2**53+2), 0, -0x0ffffffff, -0x100000000, -0x080000001, -0, -Number.MIN_VALUE, -Number.MIN_SAFE_INTEGER, -(2**53-2), Math.PI, 1/0, Number.MAX_SAFE_INTEGER]); ");
+Plain eval!
+1903769196
+
+/*FRC-fuzzSeed-193650365*/count=96; tryItOut("if((x % 53 != 42)) ( /x/g );");
+About to recompile, using eval hack.
+Running threw: ReferenceError: Can't find variable: x
+
+/*FRC-fuzzSeed-193650365*/count=97; tryItOut("\"use strict\"; Array.prototype.shift.apply(a0, [g2.m1]);\na1 + p2;\n");
+Running threw: ReferenceError: Can't find variable: a0
+
+/*FRC-fuzzSeed-193650365*/count=98; tryItOut("\"use strict\"; o1.a0[(p={}, (p.z = (let (w)  /x/g ).valueOf(\"number\"))())] = x;");
+Compiling threw: SyntaxError: Unexpected keyword 'let'
+
+/*FRC-fuzzSeed-193650365*/count=99; tryItOut("\"use strict\"; mathy0 = (function(x, y) { return Math.max({  }, Math.cbrt(Math.acosh(Math.min(Math.fround((Math.fround(( ~ x)) >= Math.fround(x))), Math.pow((( + y) < ( + x)), ((x ? y : y) >>> 0)))))); }); testMathyFunction(mathy0, [Number.MAX_SAFE_INTEGER, 0.000000000000001, 0x080000000, -Number.MAX_VALUE, 0x080000001, Number.MIN_SAFE_INTEGER, 0x0ffffffff, -0x080000000, 0/0, Number.MIN_VALUE, 42, -0x100000001, -0x07fffffff, -0x0ffffffff, -Number.MIN_SAFE_INTEGER, -(2**53+2), 0x07fffffff, 2**53-2, 0x100000001, 0, 2**53+2, -(2**53-2), 2**53, 0x100000000, 1, 1/0, 1.7976931348623157e308, Number.MAX_VALUE, -Number.MAX_SAFE_INTEGER, -1/0, -(2**53), -0x080000001, -0, Math.PI, -0x100000000, -Number.MIN_VALUE]); ");
+-1667575908
+
+/*FRC-fuzzSeed-193650365*/count=100; tryItOut("v1 = g2.eval(\"function g1.f1(v0) \\\"use asm\\\";   function f(i0, i1)\\n  {\\n    i0 = i0|0;\\n    i1 = i1|0;\\n    {\\n      {\\n        i0 = (((((((0xfd1df5d7) ? (0x4a34bc63) : (0x7d6fc533))-((((0x58594c7f)) & ((0xffffffff)))))>>>((i1)-((1/0))-(i0))) % (((i0)*0x7fe29)>>>(((((0x5d055441))>>>((0x3c766b28))) < (0x265e19a1))))) | ((i1))));\\n      }\\n    }\\n    return (((i0)-((i1) ? (1) : (i1))))|0;\\n  }\\n  return f;\");");
+Running threw: ReferenceError: Can't find variable: g2
+
+/*FRC-fuzzSeed-193650365*/count=101; tryItOut("v2 = a2.length;");
+Running threw: ReferenceError: Can't find variable: a2
+
+/*FRC-fuzzSeed-193650365*/count=102; tryItOut("\"use asm\"; testMathyFunction(mathy5, [0.000000000000001, 2**53-2, -0x0ffffffff, 0x07fffffff, -0x080000001, 0, Number.MIN_VALUE, 0x100000000, Number.MAX_SAFE_INTEGER, -Number.MAX_SAFE_INTEGER, 0x0ffffffff, Math.PI, 1/0, Number.MIN_SAFE_INTEGER, -Number.MIN_SAFE_INTEGER, -(2**53+2), -Number.MAX_VALUE, -0x07fffffff, 2**53+2, -(2**53-2), 42, -0x080000000, 1, Number.MAX_VALUE, -Number.MIN_VALUE, -0x100000001, -(2**53), 1.7976931348623157e308, 0x080000000, -0x100000000, 0x100000001, 2**53, -1/0, 0x080000001, -0, 0/0]); ");
+356145896
+
+/*FRC-fuzzSeed-193650365*/count=103; tryItOut("\"use strict\"; /*bLoop*/for (let nirmep = 0; (window) && nirmep < 29; ++nirmep) { if (nirmep % 50 == 8) { g0.offThreadCompileScript(\"x\", ({ global: o1.g1, fileName: 'evaluate.js', lineNumber: 42, isRunOnce:  \"\" , noScriptRval: y, sourceIsLazy: [z1], catchTermination: (x % 3 == 2) })); } else { print(window( '' )); }  } ");
+Running threw: ReferenceError: Can't find variable: window
+
+/*FRC-fuzzSeed-193650365*/count=104; tryItOut("v1 = g2.a0.reduce, reduceRight((function(j) { f2(j); }));");
+Running threw: ReferenceError: Can't find variable: g2
+
+/*FRC-fuzzSeed-193650365*/count=105; tryItOut("Array.prototype.sort.call(a2, f0);");
+Running threw: ReferenceError: Can't find variable: a2
+
+/*FRC-fuzzSeed-193650365*/count=106; tryItOut("Array.prototype.shift.apply(a0, []);v0 = r1.compile;");
+Running threw: ReferenceError: Can't find variable: a0
+
+/*FRC-fuzzSeed-193650365*/count=107; tryItOut("v2 = evaluate(\"/* no regression tests found */\", ({ global: g1, fileName: 'evaluate.js', lineNumber: 42, isRunOnce: function shapeyConstructor(ihlqnt){delete ihlqnt[\"setPrototypeOf\"];delete ihlqnt[\"setPrototypeOf\"];ihlqnt[\"setPrototypeOf\"] = x = Proxy.createFunction((function handlerFactory(x) {return {getOwnPropertyDescriptor: function(name) { return {get: function() { throw 4; }, set: function() { throw 5; }}; }, getPropertyDescriptor: function(name) { return {get: function() { throw 4; }, set: function() { throw 5; }}; }, defineProperty: function() { throw 3; }, getOwnPropertyNames: function() { return Object.getOwnPropertyNames(x); }, delete: function() { throw 3; }, fix: function() { if (Object.isFrozen(x)) { return Object.getOwnProperties(x); } }, has: function(name) { return name in x; }, hasOwn: function() { throw 3; }, get: function(receiver, name) { return x[name]; }, set: function() { throw 3; }, iterate: function() { return (function() { for (var name in x) { yield name; } })(); }, enumerate: function() { var result = []; for (var name in x) { result.push(name); }; return result; }, keys: undefined, }; })(({a2:z2})), (let (e=eval) e), Math.atan2);for (var ytqsqncus in ihlqnt) { }ihlqnt[\"setPrototypeOf\"] = [1];ihlqnt[\"setPrototypeOf\"] = function(){};ihlqnt[\"setPrototypeOf\"] = x;for (var ytqmnxggu in ihlqnt) { }ihlqnt[\"setPrototypeOf\"] = {} = {};ihlqnt[\"setPrototypeOf\"] = Math.atan2(-1,  /x/ );return ihlqnt; }/*tLoopC*/for (let a of /*MARR*/[]) { try{let zoaviz = new shapeyConstructor(a); print('EETT'); v2 = (this.v2 instanceof o1);}catch(e){print('TTEE ' + e); } }, noScriptRval:  ? ({x: e})(x =  , /\\B/gi) : (), sourceIsLazy: new Boolean(false) += true, catchTermination: (x % 24 == 19) }));");
+Compiling threw: SyntaxError: Unexpected identifier 'name'
+
+/*FRC-fuzzSeed-193650365*/count=108; tryItOut("with((4277)){for (var v of g2.g2) { try { t1 = new Float32Array(6); } catch(e0) { } try { a0.reverse(g0.g2, b2); } catch(e1) { } try { Object.defineProperty(o2, \"t0\", { configurable: (x % 2 == 1), enumerable: true,  get: function() {  return t2.subarray(8); } }); } catch(e2) { } o1.s2 = new String; }null; }");
+Running threw: ReferenceError: Can't find variable: g2
+
+/*FRC-fuzzSeed-193650365*/count=109; tryItOut("mathy3 = (function(x, y) { return mathy1((Math.max(Math.fround((-0x100000000 >= Math.fround(( + ((Math.max((y | 0), (x >>> 0)) >>> 0) | 0))))), ( + Math.atan2((mathy2(( + Math.sign(42)), ( + x)) >>> 0), (-0x100000000 ** y)))) | 0), Math.hypot(Math.cos(y), [b])); }); testMathyFunction(mathy3, [42, 0x080000001, -Number.MAX_SAFE_INTEGER, 2**53+2, -0x07fffffff, 1/0, 2**53, -1/0, 0x100000001, -Number.MAX_VALUE, -0, -0x0ffffffff, 0x080000000, 0.000000000000001, Number.MIN_SAFE_INTEGER, -(2**53+2), 0x07fffffff, Math.PI, -0x080000001, Number.MAX_SAFE_INTEGER, -Number.MIN_VALUE, 0x100000000, -(2**53), -0x080000000, Number.MIN_VALUE, 1, -(2**53-2), 0x0ffffffff, -Number.MIN_SAFE_INTEGER, 1.7976931348623157e308, 0/0, -0x100000001, 0, 2**53-2, -0x100000000, Number.MAX_VALUE]); ");
+Compiling threw: SyntaxError: Unexpected token '**'. Amiguous unary expression in the left hand side of the exponentiation expression; parenthesis must be used to disambiguate the expression.
+
+/*FRC-fuzzSeed-193650365*/count=110; tryItOut("mathy2 = (function(x, y) { return Math.fround((Math.fround((( + Math.abs((Math.ceil(x) >>> 0))) < ( + mathy0((( + ((Math.fround(x) ? ((( + Math.pow(y, x)) << ((((x >>> 0) ? (x | 0) : (x >>> 0)) >>> 0) >>> 0)) >>> 0) : y) >>> 0)) >>> 0), ( + ( ! (( - (-(2**53) | 0)) | 0))))))) ** Math.fround((((((0x100000000 ? ( + y) : ( ~ x)) >>> 0) ? (mathy1(( - ( + Math.fround(x))), (((y >>> 0) << ((y < 2**53) >>> 0)) >>> 0)) >>> 0) : (Math.hypot(x, ( + Math.fround(( ! Math.fround(((1 >>> 0) != (mathy1((x | 0), (y | 0)) | 0))))))) >>> 0)) >>> 0) % Math.round((( + ( + ( ! (( ~ Math.asinh(y)) | 0)))) | 0)))))); }); testMathyFunction(mathy2, [-Number.MAX_SAFE_INTEGER, -0x080000001, Math.PI, Number.MAX_SAFE_INTEGER, 42, 0x080000000, -0x0ffffffff, -0x100000000, 2**53, -0x080000000, 0x0ffffffff, -Number.MIN_SAFE_INTEGER, 0, 0x100000000, -Number.MIN_VALUE, Number.MIN_VALUE, -(2**53+2), -0x07fffffff, 0x080000001, 1/0, 0.000000000000001, -0, 0/0, 1.7976931348623157e308, 1, -(2**53-2), 0x100000001, 0x07fffffff, Number.MAX_VALUE, 2**53+2, -(2**53), -0x100000001, 2**53-2, -1/0, Number.MIN_SAFE_INTEGER, -Number.MAX_VALUE]); ");
+-1667575908
+
+/*FRC-fuzzSeed-193650365*/count=111; tryItOut("mathy4 = (function(stdlib, foreign, heap){ \"use asm\";   var ff = foreign.ff;\n  function f(d0, i1)\n  {\n    d0 = +d0;\n    i1 = i1|0;\n    return +((3.022314549036573e+23));\n  }\n  return f; })(this, {ff: x}, new SharedArrayBuffer(4096)); testMathyFunction(mathy4, [0, -0x0ffffffff, Number.MIN_SAFE_INTEGER, -0, -Number.MIN_SAFE_INTEGER, -0x100000000, 2**53+2, 1, 0/0, 0.000000000000001, 2**53-2, -(2**53), -Number.MIN_VALUE, -0x07fffffff, 0x080000001, Number.MIN_VALUE, 1/0, -1/0, 0x07fffffff, -(2**53-2), -0x080000000, -0x080000001, 1.7976931348623157e308, 42, -0x100000001, 0x100000000, 0x0ffffffff, -Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER, 0x100000001, -(2**53+2), Math.PI, 0x080000000, 2**53, Number.MAX_VALUE, -Number.MAX_VALUE]); ");
+Running threw: ReferenceError: Can't find variable: x
+
+/*FRC-fuzzSeed-193650365*/count=112; tryItOut("\"use asm\"; mathy2 = (function(stdlib, foreign, heap){ \"use asm\";   var Infinity = stdlib.Infinity;\n  var ff = foreign.ff;\n  var Float64ArrayView = new stdlib.Float64Array(heap);\n  function f(i0, i1)\n  {\n    i0 = i0|0;\n    i1 = i1|0;\n    var i2 = 0;\n    (Float64ArrayView[0]) = ((Infinity));\n    i1 = (!(/*FFI*/ff()|0));\n    ((4277)) = ((i0)+(/*FFI*/ff(((((i0)) << ((i0)+(!(i2))))), ((-513.0)), ((x)), ((((i1)+((0xfb12e2db) ? (-0x8000000) : (0xfed2208e))) << ((i0)+((0x6a3f6a03) <= (0xffffffff))))), (((274877906945.0) + (((0x745a588a)-(-0x1182412)+(0xfdfc5855))))), ((+((x.__defineSetter__(\"x\", function(y) { \"use strict\"; yield y; i0 + '';; yield y; }))))), ((((0xf8815ebb)) >> ((0x29c2c58a)))))|0));\n    {\n      i2 = (i0);\n    }\n    {\n      i2 = (i0);\n    }\n    return +((+(1.0/0.0)));\n  }\n  return f; })(this, {ff: function (z) { ; } }, new SharedArrayBuffer(4096)); testMathyFunction(mathy2, /*MARR*/[x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x]); ");
+Compiling threw: SyntaxError: Unexpected keyword 'yield'. Cannot use yield expression out of generator.
+
+/*FRC-fuzzSeed-193650365*/count=113; tryItOut("mathy3 = (function(x, y) { \"use strict\"; return ( ~ Math.fround((mathy0((((( + mathy2(( + x), ( + Math.fround(( ~ Math.fround(x)))))) || ( + ( - x))) >>> 0) >>> 0), (mathy1(( + Math.sqrt(( + 42))), Math.fround(( ~ Math.fround(((\"\\uD706\" >>> 0) !== (y >>> 0)))))) >>> 0)) >>> 0))); }); ");
+
+/*FRC-fuzzSeed-193650365*/count=114; tryItOut("\"use strict\"; mathy1 = (function(x, y) { \"use asm\"; return mathy0((( + Math.min(( + Math.atan2(( + x), ( + Math.log10(x)))), Math.fround((Math.fround(-0x07fffffff) ** Math.fround(y))))) >>> 0), (Math.exp((Math.pow((Math.min((0x080000000 >>> 0), y) ? y : Math.fround(y)), ((Math.fround(((y | 0) ? Math.fround(Math.min((x >>> 0), Math.fround(x))) : ( + y))) * Math.fround(0x07fffffff)) | 0)) << Math.min((( - x) | 0), (Math.fround(( ! (x | 0))) | 0)))) >>> 0)); }); testMathyFunction(mathy1, [-Number.MAX_VALUE, -0x080000000, Number.MAX_VALUE, 0x0ffffffff, 1, -0x080000001, 1/0, 0x080000000, 0x07fffffff, 42, -Number.MAX_SAFE_INTEGER, -1/0, 0x080000001, -(2**53+2), -(2**53-2), 2**53+2, 0.000000000000001, -0x100000000, Number.MIN_VALUE, -Number.MIN_VALUE, -0x100000001, Number.MAX_SAFE_INTEGER, Math.PI, 0, 2**53-2, -0x07fffffff, 2**53, 1.7976931348623157e308, 0x100000001, 0x100000000, -0x0ffffffff, -Number.MIN_SAFE_INTEGER, -(2**53), 0/0, -0, Number.MIN_SAFE_INTEGER]); ");
+-1667575908
+
+/*FRC-fuzzSeed-193650365*/count=115; tryItOut("v1 = o0.r0.flags;");
+Running threw: ReferenceError: Can't find variable: o0
+
+/*FRC-fuzzSeed-193650365*/count=116; tryItOut("mathy3 = (function(stdlib, foreign, heap){ \"use asm\";   var ff = foreign.ff;\n  function f(i0, i1)\n  {\n    i0 = i0|0;\n    i1 = i1|0;\n    i1 = (i0);\n    /*FFI*/ff();\n    return +((9.44473296573929e+21));\n  }\n  return f; })(this, {ff: arguments.callee}, new SharedArrayBuffer(4096)); testMathyFunction(mathy3, [0x07fffffff, Number.MIN_SAFE_INTEGER, -0x100000001, 0x080000001, Number.MIN_VALUE, 42, 0.000000000000001, 2**53, Math.PI, -Number.MIN_SAFE_INTEGER, -(2**53+2), -0x0ffffffff, -0x100000000, 1/0, 1.7976931348623157e308, 0x0ffffffff, -1/0, -Number.MIN_VALUE, -Number.MAX_SAFE_INTEGER, 0/0, -(2**53), 0x080000000, 0x100000000, -Number.MAX_VALUE, -0, -0x080000001, -0x080000000, -0x07fffffff, 1, Number.MAX_VALUE, 0x100000001, 0, Number.MAX_SAFE_INTEGER, 2**53-2, -(2**53-2), 2**53+2]); ");

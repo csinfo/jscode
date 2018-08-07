@@ -1,0 +1,2 @@
+Number: /tmp/tmp4sNFkDloop3/w21
+Command: /home/admin/webkit/WebKitBuild/Release/bin/jsc -e maxRunTime=12000 -f /tmp/tmp4sNFkDloop3/jsfunfuzz.js

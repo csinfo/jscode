@@ -1,0 +1,4 @@
+***
+Targeting JavaScriptCore / WebKit.
+[object Object]
+undefined

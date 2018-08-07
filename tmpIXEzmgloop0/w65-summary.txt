@@ -1,0 +1,2 @@
+Number: /tmp/tmpIXEzmgloop0/w65
+Command: /home/admin/webkit/WebKitBuild/Release/bin/jsc -e maxRunTime=12000 -f /tmp/tmpIXEzmgloop0/jsfunfuzz.js

@@ -1,0 +1,2 @@
+Number: /tmp/tmpQXJ0IIloop1/w28-final
+Command: /home/admin/webkit/WebKitBuild/Release/bin/jsc -e maxRunTime=12000 -f /tmp/tmpQXJ0IIloop1/w28-reduced.js

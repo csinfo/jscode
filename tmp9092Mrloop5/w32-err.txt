@@ -1,0 +1,9 @@
+1   0x2aab6e78d5b7 WTFCrash
+2   0x2aab6e7d5e78 WTF::OSAllocator::reserveAndCommit(unsigned long, WTF::OSAllocator::Usage, bool, bool, bool)
+3   0x2aab6e730909 JSC::Yarr::Interpreter<unsigned char>::matchDisjunction(JSC::Yarr::ByteDisjunction*, JSC::Yarr::Interpreter<unsigned char>::DisjunctionContext*, bool)
+4   0x2aab6e72c7c4 JSC::Yarr::interpret(JSC::Yarr::BytecodePattern*, WTF::String const&, unsigned int, unsigned int*)
+5   0x2aab6e6159c4 JSC::RegExp::match(JSC::VM&, WTF::String const&, unsigned int)
+6   0x2aab6e61dcac JSC::RegExpObject::matchInline(JSC::ExecState*, JSC::JSGlobalObject*, JSC::JSString*)
+7   0x2aab6e61e0b9 JSC::RegExpObject::match(JSC::ExecState*, JSC::JSGlobalObject*, JSC::JSString*)
+8   0x2aab6e6258fb JSC::regExpProtoFuncTestFast(JSC::ExecState*)
+9   0x2aab72001028
